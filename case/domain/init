@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo -e "Meshing from File"
+ideasUnvToFoam domain.unv
+
+topoSet
+
+createPatch -overwrite
+
+echo -e "Changing patch type"
+changeDictionary 
+
+echo -e "Merging meshes"
+mergeMeshes . ../overset -overwrite 
+
+echo -e "setting zone ids"
+cp -r 0.orig/ 0
+setFields 

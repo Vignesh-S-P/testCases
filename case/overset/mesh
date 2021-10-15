@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo -e "Meshing from File"
+
+ideasUnvToFoam overset.unv 
+
+echo -e "Changing patch type"
+
+changeDictionary 
+
+echo -e "Moving the overset to a different location"
+
+transformPoints -translate "(0.5 0.7 0)"
